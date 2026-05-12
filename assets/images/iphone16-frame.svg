@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  iPhone 16 frame — white titanium
+  ViewBox: -9 -2 418 830  (adds 9px left + 9px right for buttons, 2px top buffer)
+  Phone body rect:  0,0 → 400,826  rx=58
+  Screen rect:     16,16 → 384,810  rx=50
+  All buttons extend slightly outside the phone body.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-9 -2 418 830">
+  <defs>
+
+    <!-- White titanium frame gradient (left-top bright → centre matte → right-bottom bright) -->
+    <linearGradient id="fg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#f4f4f6"/>
+      <stop offset="18%"  stop-color="#e2e2e4"/>
+      <stop offset="42%"  stop-color="#c8c8ca"/>
+      <stop offset="68%"  stop-color="#d6d6d8"/>
+      <stop offset="100%" stop-color="#ededef"/>
+    </linearGradient>
+
+    <!-- Side-button gradient (edge is slightly darker) -->
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop offset="0%"   stop-color="#b8b8ba"/>
+      <stop offset="45%"  stop-color="#d8d8da"/>
+      <stop offset="100%" stop-color="#bcbcbe"/>
+    </linearGradient>
+
+    <!-- Front-camera lens deep radial gradient -->
+    <radialGradient id="cl" cx="33%" cy="36%" r="62%">
+      <stop offset="0%"   stop-color="#1e5090"/>
+      <stop offset="52%"  stop-color="#0c2848"/>
+      <stop offset="100%" stop-color="#060e1c"/>
+    </radialGradient>
+
+    <!--
+      Screen-cutout mask:
+        white = render the frame   (phone body minus screen hole)
+        black = make transparent   (the screen becomes see-through)
+    -->
+    <mask id="sm" maskUnits="userSpaceOnUse" x="-9" y="-2" width="418" height="830">
+      <rect x="0" y="0" width="400" height="826" rx="58" ry="58" fill="white"/>
+      <rect x="16" y="16" width="368" height="794" rx="50" ry="50" fill="black"/>
+    </mask>
+
+  </defs>
+
+  <!-- ══════════════════════════════════════════════
+       PHONE FRAME  (screen area is transparent)
+       ══════════════════════════════════════════════ -->
+  <rect x="0" y="0" width="400" height="826" rx="58" ry="58"
+        fill="url(#fg)" mask="url(#sm)"/>
+
+  <!-- Left-edge / top-edge specular highlight (titanium sheen) -->
+  <path d="M58,0 Q0,0 0,58 L0,300 Q10,284 10,260 L10,60 Q10,10 58,10 Z"
+        fill="rgba(255,255,255,0.38)" mask="url(#sm)"/>
+
+  <!-- Inner bezel shadow line (screen-frame junction) -->
+  <rect x="16" y="16" width="368" height="794" rx="50" ry="50"
+        fill="none" stroke="rgba(0,0,0,0.14)" stroke-width="1.5"/>
+
+  <!-- ══════════════════════════════════════════════
+       DYNAMIC ISLAND
+       ══════════════════════════════════════════════ -->
+  <!-- Main pill -->
+  <rect x="143" y="29" width="114" height="36" rx="18" ry="18" fill="#000000"/>
+
+  <!-- Ambient-light / proximity sensor (small dot, left of pill) -->
+  <circle cx="154" cy="47" r="3.5" fill="#0a0a0c"/>
+
+  <!-- Front camera housing -->
+  <circle cx="237" cy="47" r="10.5" fill="#070e18"/>
+  <!-- Lens barrel with gradient -->
+  <circle cx="237" cy="47" r="8"    fill="url(#cl)"/>
+  <!-- Lens micro-highlight -->
+  <ellipse cx="234" cy="43.5" rx="2.8" ry="2.2" fill="rgba(255,255,255,0.13)"/>
+  <!-- Lens inner ring -->
+  <circle cx="237" cy="47" r="8"    fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="0.8"/>
+
+  <!-- ══════════════════════════════════════════════
+       SIDE BUTTONS  (white titanium material)
+       ══════════════════════════════════════════════ -->
+  <!-- Action button — top-left, pill shape -->
+  <rect x="-7" y="89"  width="8" height="44" rx="4" fill="url(#bg)"/>
+  <!-- Top edge highlight on action button -->
+  <rect x="-7" y="89"  width="8" height="4"  rx="2" fill="rgba(255,255,255,0.35)"/>
+
+  <!-- Volume up -->
+  <rect x="-7" y="150" width="8" height="74" rx="4" fill="url(#bg)"/>
+  <rect x="-7" y="150" width="8" height="4"  rx="2" fill="rgba(255,255,255,0.3)"/>
+
+  <!-- Volume down -->
+  <rect x="-7" y="240" width="8" height="74" rx="4" fill="url(#bg)"/>
+  <rect x="-7" y="240" width="8" height="4"  rx="2" fill="rgba(255,255,255,0.3)"/>
+
+  <!-- Power / side button (right, longer) -->
+  <rect x="399" y="192" width="8" height="110" rx="4" fill="url(#bg)"/>
+  <rect x="399" y="192" width="8" height="4"   rx="2" fill="rgba(255,255,255,0.3)"/>
+
+</svg>
